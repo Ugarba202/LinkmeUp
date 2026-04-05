@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import { FaApple, FaGooglePlay } from "react-icons/fa";
 import phoneMockup1 from "@/assets/phone-mockup-1.png";
 
@@ -44,7 +45,7 @@ export const CTA = () => {
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             >
-              <img
+              <Image
                 src={phoneMockup1}
                 alt="LinkMeUp App"
                 className="w-64 mx-auto drop-shadow-2xl"

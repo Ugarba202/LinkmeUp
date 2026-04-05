@@ -1,14 +1,15 @@
 "use client";
 
 import React from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, Variants } from "framer-motion";
 import { ArrowRight, PlayCircle, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { AnimatedMeshBackground } from "@/components/ui/AnimatedMeshBackground";
 import { PhoneMockup } from "@/components/ui/PhoneMockup";
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -16,9 +17,9 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { y: 24, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 80, damping: 20 } },
+  visible: { y: 0, opacity: 1, transition: { type: "spring" as const, stiffness: 80, damping: 20 } },
 };
 
 export function Hero() {
@@ -134,13 +135,16 @@ export function Hero() {
                     {/* Social Buttons */}
                     <div className="w-full space-y-2.5">
                       {[
-                        { label: "Instagram", color: "from-pink-500 to-purple-500" },
-                        { label: "TikTok", color: "from-white/10 to-white/5" },
-                        { label: "LinkedIn", color: "from-blue-600 to-blue-500" },
+                        { label: "Instagram", color: "bg-gradient-to-br from-pink-500 to-purple-500" },
+                        { label: "TikTok", color: "bg-[#010101] border-white/20" },
+                        { label: "LinkedIn", color: "bg-gradient-to-br from-blue-600 to-blue-500" },
                       ].map((s) => (
                         <div
                           key={s.label}
-                          className="w-full py-3 rounded-xl bg-white/5 border border-white/8 text-center text-sm font-medium text-foreground"
+                          className={cn(
+                            "w-full py-3 rounded-xl text-center text-sm font-medium text-white shadow-sm",
+                            s.color
+                          )}
                         >
                           {s.label}
                         </div>

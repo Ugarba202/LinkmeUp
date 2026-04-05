@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { FaApple, FaGooglePlay } from "react-icons/fa";
 import { HiChevronDown } from "react-icons/hi";
 import phoneMockup1 from "@/assets/phone-mockup-1.png";
@@ -122,7 +123,7 @@ export const Hero = () => {
               className="relative z-10"
             >
               <div className="relative">
-                <img
+                <Image
                   src={phoneMockup1}
                   alt="LinkMeUp App showing QR code"
                   className="w-64 sm:w-80 h-auto drop-shadow-2xl"
@@ -137,7 +138,7 @@ export const Hero = () => {
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               className="absolute right-0 sm:right-8 top-20 z-0"
             >
-              <img
+              <Image
                 src={phoneMockup2}
                 alt="LinkMeUp App showing social profiles"
                 className="w-48 sm:w-64 h-auto drop-shadow-xl opacity-90"
