@@ -13,22 +13,22 @@ const stats = [
 
 const testimonials = [
   {
-    quote: "LinkMeUp completely changed how I network at conferences. One scan and people have all my socials — no more awkward 'follow me on...' moments.",
-    name: "Amara Johnson",
-    role: "Product Designer at Meta",
-    avatar: "AJ",
+    quote: "LinkMeUp has revolutionized how I connect with other developers and creators. Having one scan for all my social media is a huge time-saver.",
+    name: "Usman Umar Garba",
+    role: "Lead Developer & Tech Lead",
+    avatar: "/images/ucee.jpeg",
   },
   {
-    quote: "I put my LinkMeUp QR on my business card and it's been a game changer. Even when I changed my TikTok handle, everything still worked.",
-    name: "Kofi Mensah",
-    role: "Content Creator — 200K followers",
-    avatar: "KM",
+    quote: "The analytics and ease of use in LinkMeUp are unmatched. It helped me grow my audience by keeping all my links in one place.",
+    name: "Mubarak Abdullateef",
+    role: "Full-Stack Engineer",
+    avatar: "/images/Mubarak.jpeg",
   },
   {
-    quote: "As a career services director, we rolled this out to 3,000 students. The analytics alone justify it — we can see engagement like never before.",
-    name: "Sarah Chen",
-    role: "Director of Career Services, NYU",
-    avatar: "SC",
+    quote: "As a creator, I love how I can update my links instantly without changing my QR code. It's the most efficient tool for digital networking.",
+    name: "Kamal Aliyu",
+    role: "UI/UX Designer & Content Creator",
+    avatar: "/images/kamal.jpeg",
   },
 ];
 
@@ -83,8 +83,12 @@ export function Testimonials() {
                   &ldquo;{t.quote}&rdquo;
                 </p>
                 <div className="flex items-center justify-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-light flex items-center justify-center text-white font-bold ring-2 ring-primary/20 ring-offset-2 ring-offset-surface">
-                    {t.avatar}
+                  <div className="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center ring-2 ring-primary/20 ring-offset-2 ring-offset-surface bg-surface">
+                    <img
+                      src={t.avatar}
+                      alt={t.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="text-left">
                     <p className="font-semibold text-sm">{t.name}</p>

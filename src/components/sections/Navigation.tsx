@@ -10,7 +10,6 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 const NAV_LINKS = [
   { name: "How it works", href: "#how-it-works" },
   { name: "Features", href: "#features" },
-  { name: "Pricing", href: "#pricing" },
 ];
 
 export function Navigation() {

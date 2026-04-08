@@ -12,7 +12,6 @@ import { AnimatedMeshBackground } from "@/components/ui/AnimatedMeshBackground";
 const links = {
   Product: [
     { name: "Features", href: "#features" },
-    { name: "Pricing", href: "#pricing" },
     { name: "Demo", href: "#demo" },
     { name: "Changelog", href: "#" },
   ],
