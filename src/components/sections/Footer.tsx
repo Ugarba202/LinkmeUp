@@ -81,7 +81,12 @@ export function Footer() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-14">
             {/* Brand */}
             <div className="col-span-2 md:col-span-1">
-              <span className="text-xl font-black tracking-tight text-gradient block mb-3">LinkMeUp</span>
+              <div className="flex items-center gap-2 mb-4 group">
+                <div className="w-8 h-8 rounded-lg overflow-hidden relative border border-white/10 group-hover:border-primary/50 transition-colors">
+                  <img src="/images/logo.png" alt="" className="w-[140%] h-[140%] object-cover absolute top-[-20%] left-[-20%]" />
+                </div>
+                <span className="text-xl font-black tracking-tighter text-gradient">LinkMeUp</span>
+              </div>
               <p className="text-sm text-[#555566] leading-relaxed max-w-xs">
                 One QR code for all your social links. Share smarter.
               </p>
