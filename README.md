@@ -24,38 +24,6 @@ A high-fidelity, premium landing page for **LinkMeUp**, the ultimate "one QR cod
 - **Icons**: [Lucide React](https://lucide.dev/), [React Icons](https://react-icons.github.io/react-icons/)
 - **UI Components**: [Shadcn UI](https://ui.shadcn.com/)
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18.x or later
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Ugarba202/linkme_up_landing_page.git
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
-
-## 📦 Project Structure
-
-- `src/app`: Page routes and layout metadata.
-- `src/components/sections`: The main sections of the landing page (Hero, Features, Testimonials, etc.).
-- `src/components/ui`: Reusable UI components (Buttons, Mockups, Backgrounds).
-- `public/images`: Strategic brand assets and profile pictures.
 
 ## 📄 License
 

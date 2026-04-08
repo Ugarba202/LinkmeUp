@@ -59,12 +59,12 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                {/* <div className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-8">
+                <div className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-8">
                   <div className="w-5 h-5 rounded-md overflow-hidden relative border border-primary/20">
                     <img src="/images/logo.png" alt="" className="w-[140%] h-[140%] object-cover absolute top-[-20%] left-[-20%]" />
                   </div>
-                  LinkMeUp v2.0 is live
-                </div> */}
+                  We will be launching LinkMeUp soon
+                </div>
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[0.9] tracking-tighter">
                   One QR. <br />
