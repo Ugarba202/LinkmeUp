@@ -87,7 +87,7 @@ export default function PublicProfile({ params }: { params: { username: string }
   const handleAddContact = () => {
     generateVCard({
       fullName: profile.fullName,
-      username: profile.username,
+      username: profile.username || "user",
       bio: profile.bio || "Digital ID Card",
       publicUrl: window.location.href
     });

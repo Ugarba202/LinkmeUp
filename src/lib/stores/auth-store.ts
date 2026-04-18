@@ -17,6 +17,7 @@ interface AuthState {
   updateSocialLinks: (links: SocialLink[]) => void;
   setInitialized: (initialized: boolean) => void;
   setLoading: (loading: boolean) => void;
+  getProfileByUsername: (username: string) => Promise<void>;
   reset: () => void;
 }
 
@@ -36,6 +37,19 @@ export const useAuthStore = create<AuthState>()(
       })),
       setInitialized: (initialized) => set({ initialized }),
       setLoading: (loading) => set({ loading }),
+      getProfileByUsername: async (username: string) => {
+        set({ loading: true });
+        await new Promise((r) => setTimeout(r, 800));
+        
+        // In mock mode, if we already have a profile in localStorage with this username, keep it.
+        // Otherwise, we don't fetch and just leave it to the page to handle nulls or show demo data.
+        const currentState = (useAuthStore.getState() as any);
+        if (currentState.profile?.username !== username) {
+           set({ profile: null });
+        }
+        
+        set({ loading: false });
+      },
       reset: () =>
         set({
           profile: null,
