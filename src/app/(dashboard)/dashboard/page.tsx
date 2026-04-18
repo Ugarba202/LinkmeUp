@@ -60,24 +60,47 @@ export default function DashboardHome() {
       {/* ─── AI-Premium Background Elements ─── */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[500px] h-[500px] bg-primary/10 blur-[150px] rounded-full pointer-events-none -z-10" />
       
-      {/* ─── Minimal Hero Section ─── */}
-      <section className="relative">
-        <div className="flex flex-col gap-2 mb-10">
+      {/* ─── Heading & Welcome ─── */}
+      <section className="flex flex-col md:flex-row md:items-center gap-5 mb-8">
+        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 border border-white/10 p-1 flex-shrink-0 relative group">
+          <div className="absolute inset-0 bg-primary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity rounded-full -z-10" />
+          <div className="w-full h-full rounded-[14px] overflow-hidden bg-card border border-white/5 relative">
+            {profile.avatarUrl ? (
+              <img src={profile.avatarUrl} alt="Profile" className="w-full h-full object-cover transition-transform group-hover:scale-110" />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center bg-primary/5">
+                <User className="w-6 h-6 text-primary/40" />
+              </div>
+            )}
+          </div>
+          <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-lg bg-primary flex items-center justify-center border-4 border-background shadow-lg">
+            <Check className="w-2.5 h-2.5 text-white" />
+          </div>
+        </div>
+
+        <div className="space-y-0.5">
           <motion.div 
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-2 text-primary font-black uppercase tracking-[0.3em] text-[10px]"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex items-center gap-2 text-primary font-black uppercase tracking-[0.3em] text-[9px]"
           >
-            <Sparkles className="w-3 h-3" /> Digital Identity Hub
+            <Sparkles className="w-2.5 h-2.5" /> Digital Identity Hub
           </motion.div>
-          <h1 className="text-4xl md:text-5xl font-black tracking-tighter leading-tight">
-            Manage your <span className="text-gradient">Permanent</span> Pass.
+          <h1 className="text-2xl md:text-3xl font-black tracking-tighter">
+            Welcome, <span className="text-gradient">{profile.fullName?.split(' ')[0] || 'User'}</span>.
           </h1>
         </div>
+      </section>
+
+      {/* ─── Hero Action Section ─── */}
+      <section className="relative">
+        <h2 className="text-3xl md:text-4xl font-black tracking-tighter leading-tight mb-6">
+          Manage your <span className="text-gradient">Permanent</span> Pass.
+        </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr,380px] gap-8">
           {/* Main Link Card */}
-          <Card className="bg-white/[0.03] backdrop-blur-3xl border-white/5 p-8 md:p-10 rounded-[40px] relative overflow-hidden flex flex-col justify-between min-h-[280px]">
+          <Card className="bg-white/[0.03] backdrop-blur-3xl border-white/5 p-6 md:p-8 rounded-[32px] relative overflow-hidden flex flex-col justify-between min-h-[240px]">
              <div className="relative z-10">
                 <p className="text-white/30 text-xs font-black uppercase tracking-widest mb-6">Your Primary Link</p>
                 <div className="flex flex-col gap-1">
@@ -113,17 +136,17 @@ export default function DashboardHome() {
           {/* Quick Stats Grid */}
           <div className="grid grid-cols-1 gap-4">
              {stats.map((stat, i) => (
-               <Card key={stat.label} className="bg-white/[0.02] border-white/5 p-6 rounded-[32px] flex items-center justify-between group hover:bg-white/[0.04] transition-all">
+               <Card key={stat.label} className="bg-white/[0.02] border-white/5 p-4 rounded-3xl flex items-center justify-between group hover:bg-white/[0.04] transition-all">
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-white/5 border border-white/5">
-                      <stat.icon className="w-4 h-4 text-white/40" />
+                    <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-white/5 border border-white/5">
+                      <stat.icon className="w-3.5 h-3.5 text-white/40" />
                     </div>
                     <div>
-                      <p className="text-xs font-black uppercase tracking-widest text-white/20 mb-0.5">{stat.label}</p>
-                      <p className="text-xl font-black tracking-tight">{stat.value}</p>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-white/20 mb-0.5">{stat.label}</p>
+                      <p className="text-lg font-black tracking-tight">{stat.value}</p>
                     </div>
                   </div>
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="w-7 h-7 rounded-full flex items-center justify-center bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity">
                     <ArrowUpRight className="w-3 h-3 text-primary" />
                   </div>
                </Card>
@@ -180,16 +203,16 @@ function ActionCard({ icon: Icon, title, desc, color, onClick }: any) {
   return (
     <button 
       onClick={onClick}
-      className="group flex flex-col items-start p-6 bg-white/[0.02] border border-white/5 rounded-[32px] hover:border-white/10 hover:bg-white/[0.04] transition-all active:scale-[0.98] text-left"
+      className="group flex flex-col items-start p-4 bg-white/[0.02] border border-white/5 rounded-3xl hover:border-white/10 hover:bg-white/[0.04] transition-all active:scale-[0.98] text-left"
     >
       <div 
-        className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110"
+        className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
         style={{ backgroundColor: `${color}10`, border: `1px solid ${color}20` }}
       >
-        <Icon className="w-5 h-5" style={{ color }} />
+        <Icon className="w-4 h-4" style={{ color }} />
       </div>
-      <p className="font-black text-[15px] mb-1">{title}</p>
-      <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-white/30">{desc}</p>
+      <p className="font-black text-sm mb-0.5">{title}</p>
+      <p className="text-[9px] uppercase font-bold tracking-[0.2em] text-white/30">{desc}</p>
     </button>
   );
 }

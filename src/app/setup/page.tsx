@@ -219,7 +219,7 @@ export default function SetupWizardPage() {
 
       {/* Content */}
       <div className="flex-1 overflow-y-auto px-6 py-4">
-        <div className="max-w-lg mx-auto">
+        <div className="max-w-md mx-auto">
           <SocialsStep
             connectedSocials={connectedSocials}
             platformList={PLATFORM_LIST}
@@ -231,11 +231,11 @@ export default function SetupWizardPage() {
 
       {/* Footer CTA */}
       <div className="px-6 py-6 border-t border-white/5">
-        <div className="max-w-lg mx-auto">
+        <div className="max-w-md mx-auto">
           <Button
             onClick={finishSetup}
             disabled={isSubmitting}
-            className="w-full h-16 rounded-3xl text-xl font-black bg-primary hover:bg-primary-dark shadow-glow transition-all"
+            className="w-full text-xl font-black bg-primary hover:bg-primary-dark shadow-glow transition-all"
           >
             {isSubmitting ? (
               <Loader2 className="w-6 h-6 animate-spin" />
@@ -287,7 +287,7 @@ export default function SetupWizardPage() {
                   value={customName}
                   onChange={(e) => setCustomName(e.target.value)}
                   placeholder="e.g. Portfolio"
-                  className="h-12 bg-background border-white/10 focus-visible:ring-primary rounded-xl"
+                  className="bg-background focus-visible:ring-primary"
                 />
               </div>
             )}
@@ -313,7 +313,7 @@ export default function SetupWizardPage() {
                         : "https://..."
                       : "your_username"
                   }
-                  className="pl-10 h-12 bg-background border-white/10 focus-visible:ring-primary rounded-xl"
+                  className="pl-10 bg-background focus-visible:ring-primary"
                   onKeyDown={(e) => e.key === "Enter" && saveSocialLink()}
                 />
               </div>
@@ -321,7 +321,7 @@ export default function SetupWizardPage() {
             <Button
               onClick={saveSocialLink}
               disabled={!dialogUsername.trim()}
-              className="w-full h-12 bg-primary hover:bg-primary-dark rounded-xl font-bold"
+              className="w-full bg-primary hover:bg-primary-dark font-bold"
             >
               <Check className="mr-2 w-4 h-4" />
               Save Connection
@@ -347,12 +347,12 @@ function SocialsStep({
   onAddClick: (platform: (typeof PLATFORM_LIST)[0] | typeof OTHER_PLATFORM) => void;
 }) {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <div>
-        <h1 className="text-3xl md:text-4xl font-black tracking-tight leading-tight mb-3">
+        <h1 className="text-2xl md:text-3xl font-black tracking-tight leading-tight mb-2">
           Final Setup: Social Links
         </h1>
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-md">
           Add at least one link to show on your public profile and QR code.
         </p>
       </div>
@@ -366,7 +366,7 @@ function SocialsStep({
             <motion.button
               key={platform.key}
               onClick={() => onAddClick(platform)}
-              className={`w-full flex items-center gap-4 p-5 rounded-2xl border transition-all text-left group ${
+              className={`w-full flex items-center gap-4 p-4 rounded-2xl border transition-all text-left group ${
                 connected
                   ? "border-primary/30 bg-primary/5"
                   : "border-white/5 bg-card/50 hover:border-white/20 hover:bg-card"
@@ -375,11 +375,11 @@ function SocialsStep({
               whileTap={{ scale: 0.99 }}
             >
               <div
-                className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 transition-all group-hover:scale-110"
+                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all group-hover:scale-110"
                 style={{ backgroundColor: `${platform.color}15` }}
               >
                 <platform.icon
-                  className="w-6 h-6"
+                  className="w-5 h-5"
                   style={{ color: platform.color }}
                 />
               </div>

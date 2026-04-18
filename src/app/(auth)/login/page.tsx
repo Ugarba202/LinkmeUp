@@ -85,7 +85,7 @@ export default function LoginPage() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="enter username"
-                className="pl-10 h-12 bg-card border-white/10 focus-visible:ring-primary rounded-xl"
+                className="pl-10 bg-card focus-visible:ring-primary"
               />
             </div>
           </div>
@@ -107,7 +107,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="pl-10 h-12 bg-card border-white/10 focus-visible:ring-primary rounded-xl"
+                className="pl-10 bg-card focus-visible:ring-primary"
               />
             </div>
           </div>
@@ -115,7 +115,7 @@ export default function LoginPage() {
           <Button
             type="submit"
             disabled={isLoading}
-            className="w-full h-12 rounded-xl text-md font-bold bg-primary hover:bg-primary-dark shadow-glow transition-all"
+            className="w-full font-bold bg-primary hover:bg-primary-dark shadow-glow transition-all"
           >
             {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Sign In"}
           </Button>

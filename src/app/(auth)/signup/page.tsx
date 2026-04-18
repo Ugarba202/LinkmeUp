@@ -124,18 +124,18 @@ export default function SignupPage() {
     }
   };
 
-  const inputBaseStyles = "h-14 bg-card/50 border-white/5 rounded-2xl text-lg text-center focus-visible:ring-primary focus-visible:bg-card transition-all placeholder:text-muted-foreground/30";
+  const inputBaseStyles = "";
 
   return (
-    <div className="min-h-screen bg-background py-16 px-6 overflow-y-auto flex justify-center selection:bg-primary/20">
+    <div className="min-h-screen bg-background py-12 px-6 overflow-y-auto flex justify-center selection:bg-primary/20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="w-full max-w-lg flex flex-col items-center"
       >
-        <Link href="/" className="inline-block mb-12">
-          <div className="w-14 h-14 rounded-2xl overflow-hidden border border-white/10 relative hover:border-primary/50 transition-colors">
+        <Link href="/" className="inline-block mb-8">
+          <div className="w-12 h-12 rounded-2xl overflow-hidden border border-white/10 relative hover:border-primary/50 transition-colors">
             <img
               src="/images/logo.png"
               alt="LinkMeUp"
@@ -144,11 +144,11 @@ export default function SignupPage() {
           </div>
         </Link>
         
-        <div className="mb-12 text-center">
-          <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4 leading-tight">
+        <div className="mb-8 text-center">
+          <h1 className="text-3xl md:text-4xl font-black tracking-tight mb-2 leading-tight">
             Digital Identity
           </h1>
-          <p className="text-muted-foreground text-lg max-w-sm mx-auto font-medium">
+          <p className="text-muted-foreground text-md max-w-sm mx-auto font-medium">
             Set up your profile and pick a username to join the network.
           </p>
         </div>
@@ -196,8 +196,8 @@ export default function SignupPage() {
           </div>
 
           {/* SECTION: Identity Fields */}
-          <div className="w-full space-y-10">
-            <div className="space-y-4">
+          <div className="w-full space-y-8">
+            <div className="space-y-3">
               <label className="text-[11px] font-black tracking-[0.2em] text-muted-foreground uppercase flex items-center justify-center">
                 Full Name
               </label>
@@ -210,7 +210,7 @@ export default function SignupPage() {
               />
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               <label className="text-[11px] font-black tracking-[0.2em] text-muted-foreground uppercase flex items-center justify-center">
                 Short Bio
               </label>
@@ -358,12 +358,12 @@ export default function SignupPage() {
             <Button
               type="submit"
               disabled={isLoading || isUsernameValid === false || !username || !fullName}
-              className="w-full h-20 rounded-[40px] text-2xl font-black bg-primary hover:bg-primary-dark shadow-glow transition-all active:scale-[0.98] py-8"
+              className="w-full text-xl font-black bg-primary hover:bg-primary-dark shadow-glow transition-all active:scale-[0.98]"
             >
-              {isLoading ? <Loader2 className="w-8 h-8 animate-spin" /> : "Continue to Final Step"}
+              {isLoading ? <Loader2 className="w-6 h-6 animate-spin" /> : "Continue to Final Step"}
             </Button>
             
-            <p className="text-center text-sm text-muted-foreground mt-12 font-medium">
+            <p className="text-center text-xs text-muted-foreground mt-8 font-medium">
               Already have an account?{" "}
               <Link href="/login" className="text-primary hover:underline font-black tracking-tight">
                 Log in

@@ -48,7 +48,7 @@ export function Hero() {
       <section
         ref={containerRef}
         onMouseMove={handleMouseMove}
-        className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden"
+        className="relative pt-24 pb-16 md:pt-40 md:pb-24 overflow-hidden"
       >
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
@@ -67,13 +67,13 @@ export function Hero() {
                   We will be launching LinkMeUp soon
                 </div>
 
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[0.9] tracking-tighter">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-[0.9] tracking-tighter">
                   One QR. <br />
                   <span className="text-gradient">All Your Socials.</span> <br />
                   <span className="text-white/40">Forever.</span>
                 </h1>
 
-                <p className="text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
                   Connect your entire digital presence into a single, permanent QR code.
                   Update your links instantly. No reprinting, ever.
                 </p>
@@ -81,14 +81,14 @@ export function Hero() {
                 <div className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
                   <MagneticButton>
                     <Link href="/signup">
-                      <Button size="lg" className="rounded-full px-8 h-16 text-lg font-bold bg-primary hover:bg-primary-dark shadow-glow transition-all">
+                      <Button className="rounded-full px-8 h-12 text-md font-bold bg-primary hover:bg-primary-dark shadow-glow transition-all">
                         Get Started Free
-                        <ArrowRight className="ml-2 w-5 h-5" />
+                        <ArrowRight className="ml-2 w-4 h-4" />
                       </Button>
                     </Link>
                   </MagneticButton>
                   <a href="#demo">
-                    <Button variant="ghost" className="text-lg font-semibold hover:bg-white/5 h-16 rounded-full px-8">
+                    <Button variant="ghost" className="text-md font-semibold hover:bg-white/5 h-12 rounded-full px-8">
                       View Demo
                     </Button>
                   </a>
@@ -110,15 +110,15 @@ export function Hero() {
               >
                 <PhoneMockup className="hover:shadow-glow-lg transition-shadow duration-700">
                   <div className="w-full h-full flex flex-col pt-14 px-5">
-                    <div className="flex flex-col items-center mb-10">
-                      <div className="w-20 h-20 rounded-[2rem] overflow-hidden mb-6 border border-white/10 shadow-2xl relative bg-secondary">
+                    <div className="flex flex-col items-center mb-8">
+                      <div className="w-16 h-16 rounded-[1.5rem] overflow-hidden mb-4 border border-white/10 shadow-2xl relative bg-secondary">
                          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
                          {/* Profile Image Placeholder */}
                          <div className="w-full h-full flex items-center justify-center">
-                           <div className="w-10 h-10 rounded-full border-2 border-primary/30" />
+                           <div className="w-8 h-8 rounded-full border-2 border-primary/30" />
                          </div>
                       </div>
-                      <span className="font-black text-2xl tracking-tight text-primary-light">@creative_dev</span>
+                      <span className="font-black text-xl tracking-tight text-primary-light">@creative_dev</span>
                       <span className="text-[#555566] text-sm mt-1 font-medium">Your link-in-bio</span>
                     </div>
 
