@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Heart } from "lucide-react";
 import { SiInstagram, SiX, SiLinkedin, SiGithub } from "react-icons/si";
@@ -61,10 +62,12 @@ export function Footer() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <MagneticButton>
-                <Button size="lg" className="rounded-full px-8 h-14 text-base font-semibold bg-primary hover:bg-primary-dark group shadow-glow w-full sm:w-auto">
-                  Get Started Free
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <Link href="/signup">
+                  <Button size="lg" className="rounded-full px-8 h-14 text-base font-semibold bg-primary hover:bg-primary-dark group shadow-glow w-full sm:w-auto">
+                    Get Started Free
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
               </MagneticButton>
               <Button variant="outline" size="lg" className="rounded-full px-8 h-14 text-base font-semibold border-white/10 bg-white/5 hover:bg-white/10 w-full sm:w-auto">
                 Contact Sales

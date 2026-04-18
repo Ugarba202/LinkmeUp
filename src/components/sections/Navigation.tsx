@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -52,11 +53,19 @@ export function Navigation() {
         </nav>
 
         {/* Desktop CTA */}
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-4">
+          <Link
+            href="/login"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Sign In
+          </Link>
           <MagneticButton>
-            <Button className="rounded-full px-6 bg-primary hover:bg-primary-dark text-white shadow-glow transition-all">
-              Download App
-            </Button>
+            <Link href="/signup">
+              <Button className="rounded-full px-6 bg-primary hover:bg-primary-dark text-white shadow-glow transition-all">
+                Get Started
+              </Button>
+            </Link>
           </MagneticButton>
         </div>
 
@@ -88,10 +97,17 @@ export function Navigation() {
                     </SheetClose>
                   ))}
                 </nav>
-                <div className="mt-auto pb-8">
-                  <Button className="w-full rounded-full py-6 text-lg bg-primary hover:bg-primary-dark shadow-glow">
-                    Download App
-                  </Button>
+                <div className="mt-auto pb-8 space-y-3">
+                  <Link href="/signup" className="block">
+                    <Button className="w-full rounded-full py-6 text-lg bg-primary hover:bg-primary-dark shadow-glow">
+                      Get Started
+                    </Button>
+                  </Link>
+                  <Link href="/login" className="block">
+                    <Button variant="outline" className="w-full rounded-full py-6 text-lg border-white/10 bg-white/5 hover:bg-white/10">
+                      Sign In
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </SheetContent>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
+import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { 
@@ -79,14 +80,18 @@ export function Hero() {
 
                 <div className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
                   <MagneticButton>
-                    <Button size="lg" className="rounded-full px-8 h-16 text-lg font-bold bg-primary hover:bg-primary-dark shadow-glow transition-all">
-                      Get Started Free
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </Button>
+                    <Link href="/signup">
+                      <Button size="lg" className="rounded-full px-8 h-16 text-lg font-bold bg-primary hover:bg-primary-dark shadow-glow transition-all">
+                        Get Started Free
+                        <ArrowRight className="ml-2 w-5 h-5" />
+                      </Button>
+                    </Link>
                   </MagneticButton>
-                  <Button variant="ghost" className="text-lg font-semibold hover:bg-white/5 h-16 rounded-full px-8">
-                    View Demo
-                  </Button>
+                  <a href="#demo">
+                    <Button variant="ghost" className="text-lg font-semibold hover:bg-white/5 h-16 rounded-full px-8">
+                      View Demo
+                    </Button>
+                  </a>
                 </div>
               </motion.div>
             </div>
