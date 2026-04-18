@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Scan } from "lucide-react";
 import { 
   SiInstagram as Instagram, 
   SiLinkedin as Linkedin, 
@@ -87,6 +87,12 @@ export function Hero() {
                       </Button>
                     </Link>
                   </MagneticButton>
+                  <Link href="/scan">
+                    <Button variant="ghost" className="text-lg font-semibold hover:bg-white/5 h-16 rounded-full px-8 flex items-center gap-2">
+                      <Scan className="w-5 h-5 text-primary" />
+                      Scan Now
+                    </Button>
+                  </Link>
                   <a href="#demo">
                     <Button variant="ghost" className="text-lg font-semibold hover:bg-white/5 h-16 rounded-full px-8">
                       View Demo

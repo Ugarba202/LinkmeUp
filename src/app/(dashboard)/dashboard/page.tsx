@@ -15,7 +15,8 @@ import {
   Share2,
   TrendingUp,
   Layout,
-  Link as LinkIcon
+  Link as LinkIcon,
+  Scan
 } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
@@ -105,6 +106,13 @@ export default function DashboardHome() {
               >
                 <QrCode className="mr-3 w-5 h-5" />
                 Manage Your Pass
+              </Button>
+              <Button
+                onClick={() => router.push("/scan")}
+                className="h-14 bg-primary text-white hover:brightness-110 font-black rounded-2xl px-8 shadow-glow transition-all active:scale-95"
+              >
+                <Scan className="w-5 h-5 mr-3" />
+                Scan Profile
               </Button>
               <Button
                 onClick={handleCopyLink}

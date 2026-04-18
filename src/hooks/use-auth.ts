@@ -16,14 +16,18 @@ export function useAuth() {
 
   // Mock Initialization
   useEffect(() => {
-    // If we want it to act like they just opened the app, we set initialized to true.
+    // If a profile exists in persistent storage, sync the user object
+    if (profile && !user) {
+      setUser({ id: profile.id });
+    }
+
     const timer = setTimeout(() => {
       setLoading(false);
       setInitialized(true);
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [setLoading, setInitialized]);
+  }, [profile, user, setLoading, setInitialized]);
 
   const signUp = useCallback(async (
     email: string, 
