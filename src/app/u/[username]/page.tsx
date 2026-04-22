@@ -112,12 +112,12 @@ export default function PublicProfile({ params }: { params: { username: string }
           className="relative mb-10 group"
         >
           <div className="absolute inset-0 bg-primary/30 blur-[40px] rounded-full scale-75 group-hover:scale-100 transition-transform duration-700" />
-          <div className="w-32 h-32 rounded-[40px] bg-white/5 border border-white/10 p-1 relative overflow-hidden backdrop-blur-xl">
+          <div className="w-28 h-28 rounded-full bg-white/5 border border-white/10 p-1 relative overflow-hidden backdrop-blur-xl">
              {profile.avatarUrl ? (
-               <img src={profile.avatarUrl} alt={profile.fullName} className="w-full h-full object-cover rounded-[36px]" />
+               <img src={profile.avatarUrl} alt={profile.fullName} className="w-full h-full object-cover rounded-full" />
              ) : (
-               <div className="w-full h-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center rounded-[36px]">
-                 <span className="text-4xl font-black">{profile.fullName?.[0]}</span>
+               <div className="w-full h-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center rounded-full">
+                 <span className="text-3xl font-black">{profile.fullName?.[0]}</span>
                </div>
              )}
           </div>
@@ -166,15 +166,15 @@ export default function PublicProfile({ params }: { params: { username: string }
         >
           <Button 
             onClick={handleAddContact}
-            className="flex-1 h-16 rounded-3xl bg-white text-black hover:bg-white/90 font-black uppercase tracking-[0.15em] text-[11px] shadow-glow-sm flex items-center justify-center gap-2 active:scale-95 transition-all"
+            className="flex-1 h-12 rounded-full bg-white text-black hover:bg-white/90 font-black uppercase tracking-[0.15em] text-[10px] shadow-glow-sm flex items-center justify-center gap-2 active:scale-95 transition-all"
           >
-            Add to Contacts <Save className="w-4 h-4" />
+            Add to Contacts <Save className="w-3.5 h-3.5" />
           </Button>
           <Button 
             onClick={handleShare}
-            className={`h-16 w-16 rounded-3xl backdrop-blur-xl border border-white/10 flex items-center justify-center transition-all active:scale-95 ${copied ? 'bg-green-500/20 text-green-500 border-green-500/20' : 'bg-white/5 text-white'}`}
+            className={`h-12 w-12 rounded-full backdrop-blur-xl border border-white/10 flex items-center justify-center transition-all active:scale-95 ${copied ? 'bg-green-500/20 text-green-500 border-green-500/20' : 'bg-white/5 text-white'}`}
           >
-             {copied ? <Check className="w-5 h-5" /> : <Share2 className="w-5 h-5" />}
+             {copied ? <Check className="w-4 h-4" /> : <Share2 className="w-4 h-4" />}
           </Button>
         </motion.div>
 
@@ -205,12 +205,12 @@ export default function PublicProfile({ params }: { params: { username: string }
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 + (i * 0.1) }}
-                  className="group relative h-20 bg-white/[0.03] backdrop-blur-2xl border border-white/5 rounded-[28px] flex items-center px-6 transition-all hover:bg-white/[0.06] hover:border-white/10 hover:shadow-2xl hover:shadow-primary/5 active:scale-[0.98]"
+                  className="group relative h-14 bg-white/[0.03] backdrop-blur-2xl border border-white/5 rounded-2xl flex items-center px-5 transition-all hover:bg-white/[0.06] hover:border-white/10 hover:shadow-2xl hover:shadow-primary/5 active:scale-[0.98]"
                 >
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-8 rounded-r-full bg-white/5 group-hover:bg-primary transition-all scale-y-0 group-hover:scale-y-100" />
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 rounded-r-full bg-white/5 group-hover:bg-primary transition-all scale-y-0 group-hover:scale-y-100" />
                   
-                  <div className="w-12 h-12 rounded-[18px] bg-white/5 flex items-center justify-center mr-5 border border-white/5">
-                     <Icon className="w-5 h-5 group-hover:scale-110 transition-transform" style={{ color: config.color }} />
+                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center mr-4 border border-white/5">
+                     <Icon className="w-4 h-4 group-hover:scale-110 transition-transform" style={{ color: config.color }} />
                   </div>
                   
                   <div className="flex-1">
@@ -241,11 +241,11 @@ export default function PublicProfile({ params }: { params: { username: string }
               <div className="h-px w-8 bg-white/5" />
            </div>
            
-           <div className="px-6 py-4 bg-white/[0.02] border border-white/5 rounded-3xl backdrop-blur-md flex items-center gap-3 group cursor-pointer hover:bg-white/[0.05] transition-all" onClick={() => window.location.href = '/'}>
-              <div className="w-8 h-8 bg-white text-black rounded-xl flex items-center justify-center group-hover:rotate-[360deg] transition-all duration-1000">
-                 <QrIcon className="w-4 h-4" />
+           <div className="px-5 h-12 bg-white/[0.02] border border-white/5 rounded-2xl backdrop-blur-md flex items-center gap-3 group cursor-pointer hover:bg-white/[0.05] transition-all" onClick={() => window.location.href = '/'}>
+              <div className="w-7 h-7 bg-white text-black rounded-lg flex items-center justify-center group-hover:rotate-[360deg] transition-all duration-1000">
+                 <QrIcon className="w-3.5 h-3.5" />
               </div>
-              <p className="text-[10px] font-black uppercase tracking-widest leading-none">
+              <p className="text-[9px] font-black uppercase tracking-widest leading-none">
                  Get your <span className="text-secondary">Free</span> pass
               </p>
            </div>

@@ -45,7 +45,7 @@ export function Footer() {
   return (
     <>
       {/* CTA */}
-      <AnimatedMeshBackground className="py-24 md:py-32">
+      <AnimatedMeshBackground className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <motion.div
             className="max-w-2xl mx-auto"
@@ -53,7 +53,7 @@ export function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 text-balance">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 text-balance">
               Ready to simplify your{" "}
               <span className="text-gradient">social presence</span>?
             </h2>
@@ -63,13 +63,13 @@ export function Footer() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <MagneticButton>
                 <Link href="/signup">
-                  <Button size="lg" className="rounded-full px-8 h-14 text-base font-semibold bg-primary hover:bg-primary-dark group shadow-glow w-full sm:w-auto">
+                  <Button className="rounded-full px-8 h-12 text-sm font-semibold bg-primary hover:bg-primary-dark group shadow-glow w-full sm:w-auto">
                     Get Started Free
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
               </MagneticButton>
-              <Button variant="outline" size="lg" className="rounded-full px-8 h-14 text-base font-semibold border-white/10 bg-white/5 hover:bg-white/10 w-full sm:w-auto">
+              <Button variant="outline" className="rounded-full px-8 h-12 text-sm font-semibold border-white/10 bg-white/5 hover:bg-white/10 w-full sm:w-auto">
                 Contact Sales
               </Button>
             </div>
@@ -120,9 +120,9 @@ export function Footer() {
               <div className="flex gap-2 w-full md:w-auto">
                 <Input
                   placeholder="you@email.com"
-                  className="bg-white/5 border-white/10 text-foreground placeholder:text-[#555566] h-10 rounded-full px-4 md:w-56"
+                  className="bg-white/5 border-white/10 text-foreground placeholder:text-[#555566] h-12 rounded-full px-6 md:w-64"
                 />
-                <Button className="rounded-full h-10 px-5 bg-primary hover:bg-primary-dark">Subscribe</Button>
+                <Button className="rounded-full h-12 px-6 bg-primary hover:bg-primary-dark font-bold text-xs uppercase tracking-widest">Subscribe</Button>
               </div>
             </div>
           </div>

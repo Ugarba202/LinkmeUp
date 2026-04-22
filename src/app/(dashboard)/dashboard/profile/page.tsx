@@ -122,7 +122,7 @@ export default function ProfileEditor() {
         >
           <Settings2 className="w-3 h-3" /> Identity Configuration
         </motion.div>
-        <h1 className="text-4xl md:text-5xl font-black tracking-tighter leading-tight">
+        <h1 className="text-2xl md:text-3xl font-black tracking-tighter leading-tight">
            Profile <span className="text-primary">Essence</span>.
         </h1>
       </div>
@@ -131,17 +131,17 @@ export default function ProfileEditor() {
         
         {/* ─── Left: Form ─── */}
         <div className="space-y-8">
-          <Card className="bg-white/[0.03] backdrop-blur-3xl border-white/5 p-8 md:p-12 rounded-[48px] relative overflow-hidden shadow-2xl">
+          <Card className="bg-white/[0.03] backdrop-blur-3xl border border-white/5 p-6 md:p-8 rounded-3xl relative overflow-hidden shadow-2xl">
             {/* Subtle Gradient Glow */}
             <div className="absolute top-0 left-0 -translate-y-1/2 -translate-x-1/2 w-64 h-64 bg-primary/10 blur-[100px] pointer-events-none" />
             
             <form onSubmit={handleSubmit(onSubmit)} className="relative z-10 space-y-12">
               
               {/* Profile Header (Avatar Integration) */}
-              <div className="flex flex-col md:flex-row items-center gap-10 border-b border-white/5 pb-12">
+              <div className="flex flex-col md:flex-row items-center gap-8 border-b border-white/5 pb-8">
                 <div className="relative group">
-                  <div className="w-36 h-36 rounded-[40px] p-1 bg-gradient-to-tr from-primary/50 to-secondary/50 shadow-2xl transition-transform duration-700 group-hover:scale-105">
-                    <div className="w-full h-full rounded-[36px] bg-[#050510] flex items-center justify-center overflow-hidden relative border border-white/5">
+                  <div className="w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-primary/50 to-secondary/50 shadow-2xl transition-transform duration-700 group-hover:scale-105">
+                    <div className="w-full h-full rounded-full bg-[#050510] flex items-center justify-center overflow-hidden relative border border-white/5">
                        {isUploading ? (
                         <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center gap-3 z-20 backdrop-blur-sm">
                            <Loader2 className="w-6 h-6 animate-spin text-primary" />
@@ -150,9 +150,9 @@ export default function ProfileEditor() {
                       ) : null}
                       
                       {profile.avatarUrl ? (
-                        <img src={profile.avatarUrl} alt="Avatar" className="w-full h-full object-cover rounded-[34px]" />
+                        <img src={profile.avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
                       ) : (
-                        <User className="w-14 h-14 text-white/10" />
+                        <User className="w-10 h-10 text-white/10" />
                       )}
                       
                       <button 
@@ -164,9 +164,6 @@ export default function ProfileEditor() {
                          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white">Replace</span>
                       </button>
                     </div>
-                  </div>
-                  <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-2xl bg-primary flex items-center justify-center border-4 border-[#050510] shadow-2xl">
-                     <Sparkles className="w-6 h-6 text-white" />
                   </div>
                 </div>
 
@@ -194,7 +191,7 @@ export default function ProfileEditor() {
                    </label>
                    <Input 
                      {...register("fullName")}
-                     className="h-16 bg-white/[0.04] border-white/5 focus-visible:ring-primary rounded-[22px] px-6 text-base font-bold transition-all" 
+                     className="h-12 bg-white/[0.04] border-white/5 focus-visible:ring-primary rounded-xl px-4 text-sm font-bold transition-all" 
                      placeholder="Digital Entity"
                    />
                 </div>
@@ -208,7 +205,7 @@ export default function ProfileEditor() {
                       </span>
                       <Input 
                         {...register("username")}
-                        className="pl-12 h-16 bg-white/[0.04] border-white/5 focus-visible:ring-primary rounded-[22px] px-6 text-base font-bold transition-all" 
+                        className="pl-12 h-12 bg-white/[0.04] border-white/5 focus-visible:ring-primary rounded-xl px-4 text-sm font-bold transition-all" 
                         placeholder="handle"
                       />
                    </div>
@@ -221,7 +218,7 @@ export default function ProfileEditor() {
                  </label>
                  <textarea 
                    {...register("bio")}
-                   className="w-full min-h-[160px] bg-white/[0.04] border border-white/5 focus:ring-2 focus:ring-primary rounded-[32px] px-6 py-6 text-sm font-bold leading-relaxed text-white placeholder:text-white/10 outline-none transition-all"
+                   className="w-full min-h-[140px] bg-white/[0.04] border border-white/5 focus:ring-2 focus:ring-primary rounded-2xl px-5 py-5 text-sm font-bold leading-relaxed text-white placeholder:text-white/10 outline-none transition-all"
                    placeholder="Describe your essence in the digital space..."
                  />
               </div>
@@ -251,9 +248,9 @@ export default function ProfileEditor() {
                     <Button 
                       type="submit"
                       disabled={isSaving}
-                      className="h-16 px-14 bg-white text-black hover:bg-white/90 font-black uppercase tracking-[0.2em] text-[10px] rounded-[24px] shadow-glow-sm min-w-[200px] active:scale-[0.98] transition-all"
+                      className="h-12 px-10 bg-white text-black hover:bg-white/90 font-black uppercase tracking-[0.2em] text-[10px] rounded-xl shadow-glow-sm min-w-[180px] active:scale-[0.98] transition-all"
                     >
-                      {isSaving ? <Loader2 className="w-5 h-5 animate-spin" /> : "Authorize Sync"}
+                      {isSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : "Authorize Sync"}
                     </Button>
                  </div>
               </div>
@@ -263,8 +260,8 @@ export default function ProfileEditor() {
         </div>
 
         {/* ─── Right: Side Info ─── */}
-        <div className="space-y-10">
-           <Card className="p-10 bg-gradient-to-br from-white/[0.02] to-transparent border-white/5 rounded-[48px] relative overflow-hidden group">
+        <div className="space-y-8">
+           <Card className="p-6 bg-gradient-to-br from-white/[0.02] to-transparent border-white/5 rounded-3xl relative overflow-hidden group">
               <div className="absolute -right-20 -bottom-20 w-48 h-48 bg-primary/10 blur-[60px] rounded-full pointer-events-none group-hover:bg-primary/20 transition-all duration-1000" />
               <h4 className="text-base font-black mb-4 flex items-center gap-3">
                  <ShieldCheck className="w-4 h-4 text-primary" /> Authority Control
@@ -295,11 +292,11 @@ export default function ProfileEditor() {
               </div>
            </Card>
 
-           <div className="p-10 rounded-[48px] bg-primary/5 border border-primary/20 border-dashed text-center relative overflow-hidden group">
+           <div className="p-6 rounded-3xl bg-primary/5 border border-primary/20 border-dashed text-center relative overflow-hidden group">
               <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <Sparkles className="w-8 h-8 text-primary mx-auto mb-6 group-hover:animate-pulse" />
-              <h4 className="text-sm font-black mb-2 uppercase tracking-widest">Growth Matrix</h4>
-              <p className="text-[10px] text-white/20 font-bold leading-relaxed">
+              <Sparkles className="w-6 h-6 text-primary mx-auto mb-4 group-hover:animate-pulse" />
+              <h4 className="text-xs font-black mb-2 uppercase tracking-widest">Growth Matrix</h4>
+              <p className="text-[9px] text-white/20 font-bold leading-relaxed">
                 Consistency is key. Maintain a synchronized identity across all platforms to optimize your digital discovery.
               </p>
            </div>

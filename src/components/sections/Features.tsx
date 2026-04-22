@@ -6,10 +6,10 @@ import { QrCode, Zap, Globe2, Smartphone, BarChart3 } from "lucide-react";
 
 export function Features() {
   return (
-    <section className="py-24 bg-surface" id="features">
+    <section className="py-16 bg-surface" id="features">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-5">
+          <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight mb-4">
             Everything you need to{" "}
             <span className="text-gradient">share your world</span>
           </h2>

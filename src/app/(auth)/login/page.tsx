@@ -57,11 +57,11 @@ export default function LoginPage() {
               />
             </div>
           </Link>
-          <h1 className="text-2xl font-black tracking-tight mb-2">
+          <h1 className="text-xl font-black tracking-tight mb-2">
             Welcome back
           </h1>
-          <p className="text-muted-foreground text-sm">
-            Sign in to manage your LinkMeUp profile.
+          <p className="text-white/30 text-xs font-medium">
+            Authorize access to your digital node.
           </p>
         </div>
 
@@ -73,41 +73,41 @@ export default function LoginPage() {
         )}
 
         <form onSubmit={handleUsernameLogin} className="space-y-4 mb-6">
-          <div className="space-y-2">
-            <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+          <div className="space-y-1.5">
+            <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20 ml-2">
               Username
             </label>
             <div className="relative">
-              <AtSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <AtSign className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-primary opacity-40" />
               <Input
                 type="text"
                 required
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                placeholder="enter username"
-                className="pl-10 bg-card focus-visible:ring-primary"
+                placeholder="identity_handle"
+                className="pl-12 h-12 bg-white/[0.04] border-white/5 focus-visible:ring-primary rounded-xl px-4 font-bold text-sm"
               />
             </div>
           </div>
           
-          <div className="space-y-2">
+          <div className="space-y-1.5">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20 ml-2">
                 Password
               </label>
-              <Link href="#" className="text-xs font-semibold text-primary hover:underline">
-                Forgot password?
+              <Link href="#" className="text-[10px] font-black text-primary hover:underline uppercase tracking-widest">
+                Forgot?
               </Link>
             </div>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-primary opacity-40" />
               <Input
                 type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="pl-10 bg-card focus-visible:ring-primary"
+                className="pl-12 h-12 bg-white/[0.04] border-white/5 focus-visible:ring-primary rounded-xl px-4 font-bold text-sm"
               />
             </div>
           </div>
@@ -115,9 +115,9 @@ export default function LoginPage() {
           <Button
             type="submit"
             disabled={isLoading}
-            className="w-full font-bold bg-primary hover:bg-primary-dark shadow-glow transition-all"
+            className="w-full h-12 bg-white text-black hover:bg-white/90 font-black uppercase tracking-[0.2em] text-[10px] rounded-xl shadow-glow-sm transition-all active:scale-[0.98]"
           >
-            {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Sign In"}
+            {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Authorize Entry"}
           </Button>
         </form>
 

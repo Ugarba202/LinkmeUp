@@ -28,10 +28,10 @@ export function SocialProof() {
           {[...platforms, ...platforms].map((p, i) => (
             <div
               key={`${p.name}-${i}`}
-              className="flex items-center gap-2.5 px-8 opacity-30 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer flex-shrink-0"
+              className="flex items-center gap-3 px-10 opacity-20 hover:opacity-100 grayscale transition-all duration-500 cursor-pointer flex-shrink-0"
             >
-              <p.icon className="w-6 h-6" />
-              <span className="font-semibold text-sm whitespace-nowrap">{p.name}</span>
+              <p.icon className="w-5 h-5" />
+              <span className="text-[11px] font-black uppercase tracking-[0.2em]">{p.name}</span>
             </div>
           ))}
         </div>

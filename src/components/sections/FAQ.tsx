@@ -16,10 +16,10 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section className="py-24 bg-surface">
+    <section className="py-16 bg-surface">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-5">
+          <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight mb-4">
             Frequently asked <span className="text-gradient">questions</span>
           </h2>
           <p className="text-muted-foreground text-lg">Everything you need to know.</p>

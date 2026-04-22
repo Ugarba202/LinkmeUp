@@ -151,16 +151,16 @@ export default function SocialLinksManager() {
           >
             <Sparkles className="w-3 h-3" /> Identity Matrix
           </motion.div>
-          <h1 className="text-4xl md:text-5xl font-black tracking-tighter leading-tight">
+          <h1 className="text-2xl md:text-3xl font-black tracking-tighter leading-tight">
             Connected <span className="text-gradient">Signatures</span>.
           </h1>
         </div>
 
         <Button 
           onClick={() => setAddDialogOpen(true)}
-          className="h-14 bg-white text-black hover:bg-white/90 font-black rounded-2xl px-8 shadow-xl transition-all active:scale-95"
+          className="h-12 bg-white text-black hover:bg-white/90 font-black rounded-xl px-6 shadow-xl transition-all active:scale-95"
         >
-          <Plus className="w-5 h-5 mr-3" /> Add Connection
+          <Plus className="w-4 h-4 mr-2" /> Add Connection
         </Button>
       </div>
 
@@ -171,19 +171,19 @@ export default function SocialLinksManager() {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-white/[0.02] backdrop-blur-3xl border border-white/5 border-dashed rounded-[40px] p-20 flex flex-col items-center text-center group"
+              className="bg-white/[0.02] backdrop-blur-3xl border border-white/5 border-dashed rounded-3xl p-12 flex flex-col items-center text-center group"
             >
-              <div className="w-20 h-20 rounded-[28px] bg-white/5 flex items-center justify-center mb-6 border border-white/10 group-hover:scale-110 transition-transform">
-                 <LinkIcon className="w-8 h-8 text-white/20" />
+              <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-4 border border-white/10 group-hover:scale-110 transition-transform">
+                 <LinkIcon className="w-6 h-6 text-white/20" />
               </div>
-              <h3 className="text-2xl font-black mb-2 tracking-tight">System Neutral</h3>
-              <p className="text-white/30 text-sm max-w-[280px] font-medium leading-relaxed mb-8">
+              <h3 className="text-xl font-black mb-1 tracking-tight">System Neutral</h3>
+              <p className="text-white/30 text-xs max-w-[240px] font-medium leading-relaxed mb-6">
                 Your profile is currently isolated. Connect your social footprints to begin broadcasting.
               </p>
               <Button 
                 onClick={() => setAddDialogOpen(true)}
                 variant="outline"
-                className="h-12 px-6 rounded-xl border-white/10 text-xs font-black uppercase tracking-widest"
+                className="h-10 px-6 rounded-lg border-white/10 text-[10px] font-black uppercase tracking-widest"
               >
                 Initiate Connect
               </Button>
@@ -213,20 +213,20 @@ export default function SocialLinksManager() {
                     style={{ backgroundColor: config.color }} 
                   />
                   
-                  <div className="w-full px-6 flex items-center gap-6">
+                  <div className="w-full px-4 flex items-center gap-4">
                     <div className="cursor-grab text-white/10 hover:text-white/40 active:cursor-grabbing p-1 transition-colors">
-                      <GripVertical className="w-6 h-6" />
+                      <GripVertical className="w-5 h-5" />
                     </div>
                     
                     <div 
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 relative overflow-hidden bg-white/5 border border-white/5 shadow-inner"
+                      className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 relative overflow-hidden bg-white/5 border border-white/5 shadow-inner"
                     >
-                      <Icon className="w-6 h-6 relative z-10 opacity-70 group-hover:opacity-100 transition-opacity" style={{ color: config.color }} />
+                      <Icon className="w-5 h-5 relative z-10 opacity-70 group-hover:opacity-100 transition-opacity" style={{ color: config.color }} />
                       <div className="absolute inset-0 bg-inherit blur-lg opacity-40" />
                     </div>
                     
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-black text-[17px] tracking-tight mb-0.5">
+                      <h3 className="font-black text-base tracking-tight mb-0.5">
                         {link.platform === "other" ? link.username : config.displayName}
                       </h3>
                       <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20 truncate">
@@ -237,19 +237,19 @@ export default function SocialLinksManager() {
                     <div className="flex items-center gap-2">
                        <button
                         onClick={() => handleToggleVisibility(link)}
-                        className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all ${
+                        className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${
                           link.isVisible 
                             ? "bg-primary/10 text-primary border border-primary/20" 
                             : "bg-white/5 text-white/20 border border-white/5"
                         }`}
                       >
-                        {link.isVisible ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+                        {link.isVisible ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
                       </button>
                       <button
                         onClick={() => handleDelete(link.id)}
-                        className="w-12 h-12 rounded-2xl flex items-center justify-center text-white/10 hover:text-red-500 hover:bg-red-500/10 border border-transparent hover:border-red-500/20 transition-all"
+                        className="w-10 h-10 rounded-xl flex items-center justify-center text-white/10 hover:text-red-500 hover:bg-red-500/10 border border-transparent hover:border-red-500/20 transition-all"
                       >
-                        <Trash2 className="w-4 h-4" />
+                        <Trash2 className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   </div>
@@ -261,27 +261,27 @@ export default function SocialLinksManager() {
       </div>
 
       {/* ─── Tips / Promotion Section ─── */}
-      <Card className="p-8 bg-gradient-to-br from-white/[0.03] to-transparent border-white/5 rounded-[40px] overflow-hidden relative group">
+      <Card className="p-6 bg-gradient-to-br from-white/[0.03] to-transparent border-white/5 rounded-3xl overflow-hidden relative group">
          <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-primary/10 blur-[80px] rounded-full pointer-events-none group-hover:bg-primary/20 transition-all duration-1000" />
-         <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
-            <div className="w-16 h-16 rounded-[24px] bg-white/5 border border-white/10 flex items-center justify-center shrink-0 shadow-2xl">
-               <Sparkles className="w-6 h-6 text-primary" />
+         <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">
+            <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 shadow-2xl">
+               <Sparkles className="w-5 h-5 text-primary" />
             </div>
             <div className="flex-1 text-center md:text-left">
-               <h4 className="text-xl font-black mb-1">Amplify Engagement</h4>
-               <p className="text-white/30 text-sm font-medium leading-relaxed">
+               <h4 className="text-lg font-black mb-1">Amplify Engagement</h4>
+               <p className="text-white/30 text-xs font-medium leading-relaxed">
                  Profiles with integrated social signatures see a 40% higher conversion rate. Keep your links updated to maintain peak performance.
                </p>
             </div>
-            <Button variant="outline" className="h-14 px-8 border-white/10 bg-white/5 rounded-2xl font-black uppercase tracking-widest text-[10px] active:scale-95 transition-all">
-               Analyze Traffic <ChevronRight className="ml-2 w-4 h-4" />
+            <Button variant="outline" className="h-12 px-6 border-white/10 bg-white/5 rounded-xl font-black uppercase tracking-widest text-[9px] active:scale-95 transition-all">
+               Analyze Traffic <ChevronRight className="ml-2 w-3 h-3" />
             </Button>
          </div>
       </Card>
 
       {/* ─── Add Link Dialog ─── */}
       <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
-        <DialogContent className="bg-[#050510] border-white/10 sm:max-w-md p-8 rounded-[48px] shadow-[0_30px_100px_-20px_rgba(0,0,0,0.8)]">
+        <DialogContent className="bg-[#050510] border-white/10 sm:max-w-md p-6 rounded-3xl shadow-[0_30px_100px_-20px_rgba(0,0,0,0.8)]">
           <DialogHeader>
             <DialogTitle className="text-2xl font-black tracking-tighter mb-2">
               {selectedPlatform ? "Link Connection" : "Select Platform"}
@@ -303,21 +303,21 @@ export default function SocialLinksManager() {
                     <button
                       key={p.key}
                       onClick={() => setSelectedPlatform(p.key)}
-                      className="group flex flex-col items-center justify-center p-5 rounded-[28px] border border-white/5 bg-white/[0.02] hover:border-primary/50 hover:bg-primary/10 transition-all gap-4 text-center h-32"
+                      className="group flex flex-col items-center justify-center p-4 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-primary/50 hover:bg-primary/10 transition-all gap-3 text-center h-24"
                     >
-                      <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-white/5 group-hover:scale-110 transition-transform">
-                        <Icon className="w-6 h-6" style={{ color: p.color || "#fff" }} />
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-white/5 group-hover:scale-110 transition-transform">
+                        <Icon className="w-5 h-5" style={{ color: p.color || "#fff" }} />
                       </div>
-                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 group-hover:text-white transition-colors">{p.displayName}</span>
+                      <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white/40 group-hover:text-white transition-colors">{p.displayName}</span>
                     </button>
                   );
                 })}
                 <button
                   onClick={() => setSelectedPlatform("other")}
-                  className="group flex flex-col items-center justify-center p-5 rounded-[28px] border border-dashed border-white/10 bg-transparent hover:border-primary/50 hover:bg-primary/5 transition-all gap-4 text-center h-32"
+                  className="group flex flex-col items-center justify-center p-4 rounded-2xl border border-dashed border-white/10 bg-transparent hover:border-primary/50 hover:bg-primary/5 transition-all gap-3 text-center h-24"
                 >
-                  <Plus className="w-7 h-7 text-white/20 group-hover:text-primary group-hover:scale-110 transition-all" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/20 group-hover:text-primary transition-colors">Custom Link</span>
+                  <Plus className="w-6 h-6 text-white/20 group-hover:text-primary group-hover:scale-110 transition-all" />
+                  <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white/20 group-hover:text-primary transition-colors">Custom Link</span>
                 </button>
               </motion.div>
             ) : (
@@ -328,19 +328,19 @@ export default function SocialLinksManager() {
                 exit={{ opacity: 0, x: -20 }}
                 className="space-y-8 pt-4"
               >
-                <div className="flex items-center gap-4 p-5 rounded-[28px] bg-white/5 border border-white/10 relative overflow-hidden group">
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 relative overflow-hidden group">
                   {(() => {
                     const Icon = ICON_MAP[selectedPlatform] || Globe;
                     const color = selectedPlatform === "other" ? "#6366f1" : (PLATFORMS[selectedPlatform as keyof typeof PLATFORMS]?.color || "#fff");
                     return (
                       <>
-                        <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 z-10 bg-white/5 border border-white/5" style={{ color }}>
-                          <Icon className="w-7 h-7" />
+                        <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 z-10 bg-white/5 border border-white/5" style={{ color }}>
+                          <Icon className="w-6 h-6" />
                         </div>
                         <div className="flex-1">
-                          <p className="font-black text-base">{selectedPlatform === "other" ? "Custom Domain" : PLATFORMS[selectedPlatform as keyof typeof PLATFORMS]?.displayName}</p>
+                          <p className="font-black text-sm">{selectedPlatform === "other" ? "Custom Domain" : PLATFORMS[selectedPlatform as keyof typeof PLATFORMS]?.displayName}</p>
                           <button 
-                            className="text-[10px] font-black uppercase tracking-[0.2em] text-primary hover:brightness-125 transition-all"
+                            className="text-[9px] font-black uppercase tracking-[0.2em] text-primary hover:brightness-125 transition-all"
                             onClick={() => setSelectedPlatform(null)}
                           >
                             Switch Protocol
@@ -358,7 +358,7 @@ export default function SocialLinksManager() {
                         value={customName}
                         onChange={(e) => setCustomName(e.target.value)}
                         placeholder="e.g. My Website"
-                        className="h-16 bg-white/[0.04] border-white/5 focus-visible:ring-primary rounded-[22px] px-6 font-bold"
+                        className="h-12 bg-white/[0.04] border-white/5 focus-visible:ring-primary rounded-xl px-4 font-bold text-sm"
                      />
                    </div>
                 )}
@@ -376,7 +376,7 @@ export default function SocialLinksManager() {
                         value={newUsername}
                         onChange={(e) => handleInputUpdate(e.target.value)}
                         placeholder={selectedPlatform === "other" ? "https://..." : "username"}
-                        className="pl-14 h-16 bg-white/[0.04] border-white/5 focus-visible:ring-primary rounded-[22px] px-6 font-bold"
+                        className="pl-12 h-12 bg-white/[0.04] border-white/5 focus-visible:ring-primary rounded-xl px-4 font-bold text-sm"
                         onKeyDown={(e) => e.key === 'Enter' && handleAddLink()}
                       />
                   </div>
@@ -385,7 +385,7 @@ export default function SocialLinksManager() {
                 <Button
                   onClick={handleAddLink}
                   disabled={!newUsername.trim() || isAdding}
-                  className="w-full h-16 bg-white text-black hover:bg-white/90 font-black uppercase tracking-[0.2em] rounded-[22px] shadow-glow-sm transition-all active:scale-[0.98]"
+                  className="w-full h-12 bg-white text-black hover:bg-white/90 font-black uppercase tracking-[0.2em] rounded-xl shadow-glow-sm transition-all active:scale-[0.98] text-[10px]"
                 >
                   {isAdding ? "Finalizing..." : "Connect Identity"}
                 </Button>

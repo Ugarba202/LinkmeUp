@@ -84,7 +84,7 @@ export default function DashboardHome() {
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-2 text-primary font-black uppercase tracking-[0.3em] text-[9px]"
           >
-            <Sparkles className="w-2.5 h-2.5" /> Digital Identity Hub
+          
           </motion.div>
           <h1 className="text-2xl md:text-3xl font-black tracking-tighter">
             Welcome, <span className="text-gradient">{profile.fullName?.split(' ')[0] || 'User'}</span>.

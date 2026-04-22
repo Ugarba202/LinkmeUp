@@ -64,16 +64,16 @@ export default function DashboardLayout({
               key={item.href}
               href={item.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium ${
+              className={`flex items-center gap-3 px-4 h-12 rounded-xl transition-all font-black uppercase tracking-[0.2em] text-[10px] ${
                 isActive
                   ? "bg-primary/10 text-primary border border-primary/20"
-                  : "text-muted-foreground hover:text-foreground hover:bg-white/5 border border-transparent"
+                  : "text-white/20 hover:text-white hover:bg-white/[0.04] border border-transparent"
               }`}
             >
-              <item.icon className={`w-5 h-5 ${isActive ? "text-primary" : "opacity-70"}`} />
+              <item.icon className={`w-4 h-4 ${isActive ? "text-primary" : "opacity-40"}`} />
               {item.label}
               {isActive && (
-                <div className="ml-auto w-1.5 h-1.5 rounded-full bg-primary" />
+                <div className="ml-auto w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(99,102,241,0.8)]" />
               )}
             </Link>
           );
@@ -83,22 +83,22 @@ export default function DashboardLayout({
       <div className="mt-auto pt-6 border-t border-white/5 space-y-4">
         {/* User Card */}
         {profile && (
-          <div className="flex items-center gap-3 p-3 rounded-xl bg-card border border-white/5">
-            <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 overflow-hidden flex-shrink-0">
+          <div className="flex items-center gap-3 p-2.5 rounded-xl bg-white/[0.02] border border-white/5">
+            <div className="w-9 h-9 rounded-full bg-primary/10 border border-primary/20 overflow-hidden flex-shrink-0">
               {profile.avatarUrl ? (
                 <img src={profile.avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">
-                  <User className="w-5 h-5 text-primary/50" />
+                  <User className="w-4 h-4 text-primary/50" />
                 </div>
               )}
             </div>
             <div className="min-w-0 pr-2">
-              <p className="text-sm font-bold text-foreground truncate">
-                {profile.fullName || "Anonymous"}
+              <p className="text-[11px] font-black text-white truncate uppercase tracking-tight">
+                {profile.fullName || "Entity"}
               </p>
-              <p className="text-xs text-muted-foreground truncate">
-                @{profile.username || "setup_pending"}
+              <p className="text-[9px] font-black text-white/20 truncate uppercase tracking-widest">
+                @{profile.username || "pending"}
               </p>
             </div>
           </div>
@@ -106,16 +106,16 @@ export default function DashboardLayout({
 
         {/* Upgrade & Logout */}
         <div className="space-y-2">
-          <Button variant="outline" className="w-full justify-start border-primary/20 text-primary hover:bg-primary/10 transition-colors">
-            <Sparkles className="w-4 h-4 mr-2" />
+          <Button variant="outline" className="w-full h-12 justify-start border-primary/20 text-primary hover:bg-primary/10 transition-colors font-black uppercase tracking-[0.2em] text-[9px] px-4 rounded-xl">
+            <Sparkles className="w-3.5 h-3.5 mr-2" />
             Upgrade to Pro
           </Button>
           <Button 
             variant="ghost" 
             onClick={() => signOut()}
-            className="w-full justify-start text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors"
+            className="w-full h-12 justify-start text-white/20 hover:text-destructive hover:bg-destructive/10 transition-colors font-black uppercase tracking-[0.2em] text-[9px] px-4 rounded-xl"
           >
-            <LogOut className="w-4 h-4 mr-2" />
+            <LogOut className="w-3.5 h-3.5 mr-2" />
             Sign Out
           </Button>
         </div>

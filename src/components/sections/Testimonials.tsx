@@ -47,7 +47,7 @@ export function Testimonials() {
   const t = testimonials[current];
 
   return (
-    <section className="py-24 bg-surface" id="about">
+    <section className="py-16 bg-surface" id="about">
       <div className="container mx-auto px-4 md:px-6">
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 max-w-4xl mx-auto">
@@ -60,7 +60,7 @@ export function Testimonials() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
             >
-              <div className="text-4xl md:text-5xl font-extrabold text-gradient mb-1">{s.value}</div>
+              <div className="text-3xl md:text-4xl font-extrabold text-gradient mb-1">{s.value}</div>
               <p className="text-muted-foreground text-sm font-medium">{s.label}</p>
             </motion.div>
           ))}
@@ -79,7 +79,7 @@ export function Testimonials() {
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.35 }}
               >
-                <p className="text-lg md:text-xl leading-relaxed text-foreground/90 mb-8 text-balance italic">
+                <p className="text-md md:text-lg leading-relaxed text-foreground/90 mb-6 text-balance italic">
                   &ldquo;{t.quote}&rdquo;
                 </p>
                 <div className="flex items-center justify-center gap-3">

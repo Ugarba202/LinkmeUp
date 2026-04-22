@@ -196,25 +196,25 @@ export default function SetupWizardPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <header className="flex items-center justify-between px-6 py-4 border-b border-white/5">
-        <button onClick={() => router.push("/signup")} className="text-muted-foreground hover:text-foreground transition-colors">
-          <ArrowLeft className="w-5 h-5" />
+      <header className="flex items-center justify-between px-6 h-14 border-b border-white/5 bg-background/50 backdrop-blur-md sticky top-0 z-20">
+        <button onClick={() => router.push("/signup")} className="text-muted-foreground hover:text-foreground transition-colors p-2 -ml-2">
+          <ArrowLeft className="w-4 h-4" />
         </button>
-        <span className="text-lg font-black text-gradient">LinkMeUp</span>
-        <div className="w-5" /> {/* Spacer */}
+        <span className="text-base font-black text-gradient tracking-tight">LinkMeUp</span>
+        <div className="w-8" /> {/* Spacer */}
       </header>
 
       {/* Progress */}
-      <div className="px-6 pt-6 mb-8">
+      <div className="px-6 pt-6 mb-6">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-bold text-primary tracking-widest uppercase">
+          <span className="text-[10px] font-black text-primary tracking-[0.3em] uppercase">
             Final Step
           </span>
-          <span className="text-xs font-bold text-muted-foreground tracking-widest uppercase">
+          <span className="text-[10px] font-black text-muted-foreground tracking-[0.3em] uppercase">
             Completing Profile
           </span>
         </div>
-        <Progress value={progressPercent} className="h-1.5" />
+        <Progress value={progressPercent} className="h-1 rounded-full bg-white/5" />
       </div>
 
       {/* Content */}
@@ -230,25 +230,25 @@ export default function SetupWizardPage() {
       </div>
 
       {/* Footer CTA */}
-      <div className="px-6 py-6 border-t border-white/5">
+      <div className="px-6 py-6 border-t border-white/5 bg-background/50 backdrop-blur-md">
         <div className="max-w-md mx-auto">
           <Button
             onClick={finishSetup}
             disabled={isSubmitting}
-            className="w-full text-xl font-black bg-primary hover:bg-primary-dark shadow-glow transition-all"
+            className="w-full h-12 bg-white text-black hover:bg-white/90 font-black uppercase tracking-[0.2em] text-[10px] rounded-xl shadow-glow-sm active:scale-[0.98] transition-all"
           >
             {isSubmitting ? (
-              <Loader2 className="w-6 h-6 animate-spin" />
+              <Loader2 className="w-4 h-4 animate-spin" />
             ) : (
               <>
-                <QrCode className="mr-3 w-6 h-6" />
+                <QrCode className="mr-2 w-4 h-4" />
                 Generate My Pass
               </>
             )}
           </Button>
-          <p className="text-center text-xs text-muted-foreground mt-4 font-bold flex items-center justify-center gap-1">
+          <p className="text-center text-[10px] text-muted-foreground mt-4 font-black flex items-center justify-center gap-1 uppercase tracking-widest">
             <Sparkles className="w-3 h-3 text-primary" />
-            Your profile is ready. Just add your handles!
+            Your profile is ready.
           </p>
         </div>
       </div>
@@ -279,24 +279,24 @@ export default function SetupWizardPage() {
           <div className="space-y-4 pt-4">
             
             {dialogPlatform?.key === "other" && (
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              <div className="space-y-1.5">
+                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20 ml-2">
                   Platform Name
                 </label>
                 <Input
                   value={customName}
                   onChange={(e) => setCustomName(e.target.value)}
                   placeholder="e.g. Portfolio"
-                  className="bg-background focus-visible:ring-primary"
+                  className="h-12 bg-white/[0.04] border-white/5 focus-visible:ring-primary rounded-xl px-4 font-bold text-sm"
                 />
               </div>
             )}
 
-            <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                {(dialogPlatform && dialogPlatform.key === "other") ? "Username or Link" : "Username"}
+            <div className="space-y-1.5">
+              <label className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20 ml-2">
+                {(dialogPlatform && dialogPlatform.key === "other") ? "System URL" : "Identifier"}
               </label>
-              <div className="relative mt-2">
+              <div className="relative">
                 {(dialogPlatform && dialogPlatform.key !== "other") ? (
                   <AtSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary" />
                 ) : (
@@ -313,7 +313,7 @@ export default function SetupWizardPage() {
                         : "https://..."
                       : "your_username"
                   }
-                  className="pl-10 bg-background focus-visible:ring-primary"
+                  className="pl-12 h-12 bg-white/[0.04] border-white/5 focus-visible:ring-primary rounded-xl px-4 font-bold text-sm"
                   onKeyDown={(e) => e.key === "Enter" && saveSocialLink()}
                 />
               </div>
@@ -321,10 +321,10 @@ export default function SetupWizardPage() {
             <Button
               onClick={saveSocialLink}
               disabled={!dialogUsername.trim()}
-              className="w-full bg-primary hover:bg-primary-dark font-bold"
+              className="w-full h-12 bg-white text-black hover:bg-white/90 font-black uppercase tracking-[0.2em] text-[10px] rounded-xl shadow-glow-sm active:scale-[0.98] transition-all mt-2"
             >
               <Check className="mr-2 w-4 h-4" />
-              Save Connection
+              Authorize Connection
             </Button>
           </div>
         </DialogContent>
@@ -349,11 +349,11 @@ function SocialsStep({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl md:text-3xl font-black tracking-tight leading-tight mb-2">
-          Final Setup: Social Links
+        <h1 className="text-xl md:text-2xl font-black tracking-tighter leading-tight mb-2">
+          Finalize <span className="text-primary">Identity</span>.
         </h1>
-        <p className="text-muted-foreground text-md">
-          Add at least one link to show on your public profile and QR code.
+        <p className="text-white/30 text-xs font-medium leading-relaxed max-w-[280px]">
+          Connect your social footprints to begin broadcasting.
         </p>
       </div>
 
@@ -366,39 +366,39 @@ function SocialsStep({
             <motion.button
               key={platform.key}
               onClick={() => onAddClick(platform)}
-              className={`w-full flex items-center gap-4 p-4 rounded-2xl border transition-all text-left group ${
+              className={`w-full flex items-center gap-4 p-3 rounded-xl border transition-all text-left group ${
                 connected
                   ? "border-primary/30 bg-primary/5"
-                  : "border-white/5 bg-card/50 hover:border-white/20 hover:bg-card"
+                  : "border-white/5 bg-white/[0.02] hover:border-white/10 hover:bg-white/[0.04]"
               }`}
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
             >
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all group-hover:scale-110"
+                className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-all group-hover:scale-110"
                 style={{ backgroundColor: `${platform.color}15` }}
               >
                 <platform.icon
-                  className="w-5 h-5"
+                  className="w-4 h-4"
                   style={{ color: platform.color }}
                 />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="font-bold text-base">{platform.name}</p>
+                <p className="font-black text-sm tracking-tight">{platform.name}</p>
                 <p
-                  className={`text-xs font-bold uppercase tracking-wider ${
-                    connected ? "text-primary" : "text-muted-foreground/50"
+                  className={`text-[9px] font-black uppercase tracking-widest ${
+                    connected ? "text-primary" : "text-white/10"
                   }`}
                 >
-                  {connected ? `@${connected.username}` : "Not connected"}
+                  {connected ? `@${connected.username}` : "Isolated"}
                 </p>
               </div>
               {connected ? (
-                <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center border border-green-500/50">
-                  <Check className="w-4 h-4 text-green-500" />
+                <div className="w-7 h-7 rounded-full bg-primary/20 flex items-center justify-center border border-primary/20">
+                  <Check className="w-3.5 h-3.5 text-primary" />
                 </div>
               ) : (
-                <Plus className="w-5 h-5 text-muted-foreground/30 group-hover:text-primary transition-colors" />
+                <Plus className="w-4 h-4 text-white/5 group-hover:text-primary transition-colors" />
               )}
             </motion.button>
           );
@@ -437,17 +437,17 @@ function SocialsStep({
         {/* Add Custom Link Button */}
         <motion.button
           onClick={() => onAddClick(otherPlatform)}
-          className="w-full flex items-center gap-4 p-5 rounded-2xl border border-dashed border-white/20 bg-transparent hover:border-primary/50 hover:bg-primary/5 transition-all text-left group mt-4"
+          className="w-full flex items-center gap-4 p-3 rounded-xl border border-dashed border-white/10 bg-transparent hover:border-primary/50 hover:bg-primary/5 transition-all text-left group mt-2"
           whileHover={{ scale: 1.01 }}
           whileTap={{ scale: 0.99 }}
         >
-          <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-white/5 border border-white/10 flex-shrink-0 group-hover:bg-primary/20 group-hover:border-primary/30 transition-all">
-            <Plus className="w-6 h-6 text-muted-foreground group-hover:text-primary" />
+          <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-white/5 border border-white/10 flex-shrink-0 group-hover:bg-primary/20 group-hover:border-primary/30 transition-all">
+            <Plus className="w-4 h-4 text-white/20 group-hover:text-primary" />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-bold text-base whitespace-nowrap">Add Custom Link</p>
-            <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground/50">
-              Any other platform or URL
+            <p className="font-black text-sm tracking-tight whitespace-nowrap">Add Custom Link</p>
+            <p className="text-[9px] font-black uppercase tracking-widest text-white/10">
+              Any other platform
             </p>
           </div>
         </motion.button>
