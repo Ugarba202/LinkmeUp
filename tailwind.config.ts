@@ -55,6 +55,9 @@ export default {
           foreground: "#0a0a12",
         },
         success: "#10b981",
+        "amber-accent": "#f59e0b",
+        "teal-accent": "#14b8a6",
+        "rose-accent": "#f43f5e",
         destructive: {
           DEFAULT: "#ef4444",
           foreground: "#f0f0f5",
@@ -97,6 +100,15 @@ export default {
           "50%": { backgroundPosition: "100% 50%" },
           "100%": { backgroundPosition: "0% 50%" },
         },
+        celestial: {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)", opacity: "0.6" },
+          "33%": { transform: "translate(30px, -20px) scale(1.1)", opacity: "0.8" },
+          "66%": { transform: "translate(-20px, 15px) scale(0.95)", opacity: "0.5" },
+        },
+        "typing-cursor": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -108,6 +120,8 @@ export default {
         "marquee-slow": "marquee 40s linear infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "gradient-shift": "gradient-shift 8s ease infinite",
+        celestial: "celestial 20s ease-in-out infinite",
+        "typing-cursor": "typing-cursor 0.8s ease-in-out infinite",
       },
       boxShadow: {
         glow: "0 0 40px -10px rgba(99,102,241,0.5)",

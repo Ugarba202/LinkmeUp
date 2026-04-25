@@ -61,8 +61,19 @@ export default function PublicProfile({ params }: { params: { username: string }
   }, [params.username, getProfileByUsername]);
 
   if (loading) return (
-    <div className="min-h-screen bg-[#050510] flex items-center justify-center">
-       <div className="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
+    <div className="min-h-screen bg-[#050510] flex flex-col items-center pt-16 px-6 animate-pulse">
+       <div className="w-28 h-28 rounded-full bg-white/5 border border-white/10 mb-10" />
+       <div className="w-48 h-10 rounded-full bg-white/10 mb-4" />
+       <div className="w-32 h-6 rounded-full bg-white/5 mb-8" />
+       <div className="flex gap-3 w-full max-w-[440px] mb-12">
+          <div className="flex-1 h-12 rounded-full bg-white/5" />
+          <div className="w-12 h-12 rounded-full bg-white/5" />
+       </div>
+       <div className="w-full max-w-[440px] space-y-3">
+          <div className="w-full h-14 rounded-2xl bg-white/[0.03] border border-white/5" />
+          <div className="w-full h-14 rounded-2xl bg-white/[0.03] border border-white/5" />
+          <div className="w-full h-14 rounded-2xl bg-white/[0.03] border border-white/5" />
+       </div>
     </div>
   );
 

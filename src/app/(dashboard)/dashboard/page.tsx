@@ -23,17 +23,39 @@ import {
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { SettingsDialog } from "@/components/ui/settings-dialog";
 
 export default function DashboardHome() {
   const { profile, loading, initialized } = useAuth();
   const router = useRouter();
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   if (!initialized || loading) {
     return (
-      <div className="flex items-center justify-center min-h-[50vh]">
-        <Activity className="w-6 h-6 text-primary animate-pulse" />
+      <div className="space-y-12 pb-20 w-full animate-pulse pt-4">
+        {/* Skeleton Header */}
+        <section className="flex flex-col md:flex-row md:items-center gap-5 mb-8">
+          <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10" />
+          <div className="space-y-3">
+            <div className="w-20 h-2 bg-white/5 rounded-full" />
+            <div className="w-48 h-8 bg-white/10 rounded-full" />
+          </div>
+        </section>
+        
+        {/* Skeleton Hero */}
+        <section className="space-y-6">
+          <div className="w-64 h-10 bg-white/5 rounded-full" />
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr,380px] gap-8">
+             <div className="h-[240px] rounded-[32px] bg-white/[0.03] border border-white/5" />
+             <div className="grid grid-cols-1 gap-4">
+                <div className="h-[72px] rounded-3xl bg-white/[0.02] border border-white/5" />
+                <div className="h-[72px] rounded-3xl bg-white/[0.02] border border-white/5" />
+                <div className="h-[72px] rounded-3xl bg-white/[0.02] border border-white/5" />
+             </div>
+          </div>
+        </section>
       </div>
     );
   }
@@ -187,10 +209,12 @@ export default function DashboardHome() {
             title="Settings" 
             desc="Config"
             color="#ec4899"
-            onClick={() => {}}
+            onClick={() => setSettingsOpen(true)}
           />
         </div>
       </section>
+
+      <SettingsDialog open={settingsOpen} onOpenChange={setSettingsOpen} />
     </div>
   );
 }

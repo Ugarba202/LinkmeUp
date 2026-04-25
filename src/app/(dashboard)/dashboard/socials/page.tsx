@@ -17,7 +17,7 @@ import {
   Share2,
   Check
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Reorder } from "framer-motion";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -67,6 +67,7 @@ export default function SocialLinksManager() {
   const [newUsername, setNewUsername] = useState("");
   const [customName, setCustomName] = useState("");
   const [isAdding, setIsAdding] = useState(false);
+  const [urlError, setUrlError] = useState("");
 
   useEffect(() => {
     if (profile?.socialLinks) {
@@ -106,8 +107,31 @@ export default function SocialLinksManager() {
     updateSocialLinks(updatedLinks);
   };
 
+  const handleReorder = (newOrder: SocialLink[]) => {
+    // Update sortOrder based on new index
+    const updatedLinks = newOrder.map((link, index) => ({
+      ...link,
+      sortOrder: index,
+    }));
+    setLinks(updatedLinks);
+    updateSocialLinks(updatedLinks);
+  };
+
   const handleAddLink = async () => {
+    setUrlError("");
     if (!selectedPlatform || !newUsername.trim()) return;
+
+    let finalUrl = newUsername.trim();
+    if (selectedPlatform === "other") {
+      try {
+        new URL(finalUrl.startsWith('http') ? finalUrl : `https://${finalUrl}`);
+        finalUrl = finalUrl.startsWith('http') ? finalUrl : `https://${finalUrl}`;
+      } catch {
+        setUrlError("Please enter a valid URL (e.g. https://example.com)");
+        return;
+      }
+    }
+
     setIsAdding(true);
 
     const isOther = selectedPlatform === "other";
@@ -116,7 +140,7 @@ export default function SocialLinksManager() {
       userId: user.id,
       platform: isOther ? "other" : selectedPlatform,
       username: isOther ? (customName || "Custom") : newUsername.trim(),
-      url: isOther ? newUsername.trim() : constructUrl(selectedPlatform as SocialPlatform, newUsername.trim()),
+      url: isOther ? finalUrl : constructUrl(selectedPlatform as SocialPlatform, newUsername.trim()),
       isVisible: true,
       sortOrder: links.length,
       createdAt: new Date()
@@ -189,73 +213,80 @@ export default function SocialLinksManager() {
               </Button>
             </motion.div>
           ) : (
-            links.sort((a, b) => a.sortOrder - b.sortOrder).map((link, i) => {
-              const platformKey = link.platform as keyof typeof PLATFORMS | "other";
-              const config = PLATFORMS[platformKey as keyof typeof PLATFORMS] || { displayName: link.username, color: "#6366f1" };
-              const Icon = ICON_MAP[platformKey] || Globe;
-              
-              return (
-                <motion.div
-                  key={link.id}
-                  layout
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  className={`group relative overflow-hidden rounded-[32px] border transition-all h-24 flex items-center ${
-                    link.isVisible 
-                      ? "bg-white/[0.03] backdrop-blur-3xl border-white/5 hover:border-white/10 shadow-lg" 
-                      : "bg-white/[0.01] border-white/5 opacity-40 grayscale"
-                  }`}
-                >
-                  {/* Status Indicator Bar */}
-                  <div 
-                    className="absolute left-0 top-0 bottom-0 w-1 transition-all group-hover:w-2"
-                    style={{ backgroundColor: config.color }} 
-                  />
-                  
-                  <div className="w-full px-4 flex items-center gap-4">
-                    <div className="cursor-grab text-white/10 hover:text-white/40 active:cursor-grabbing p-1 transition-colors">
-                      <GripVertical className="w-5 h-5" />
-                    </div>
-                    
+            <Reorder.Group 
+              axis="y" 
+              values={links} 
+              onReorder={handleReorder}
+              className="space-y-4"
+            >
+              {links.map((link, i) => {
+                const platformKey = link.platform as keyof typeof PLATFORMS | "other";
+                const config = PLATFORMS[platformKey as keyof typeof PLATFORMS] || { displayName: link.username, color: "#6366f1" };
+                const Icon = ICON_MAP[platformKey] || Globe;
+                
+                return (
+                  <Reorder.Item
+                    key={link.id}
+                    value={link}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    className={`group relative overflow-hidden rounded-[32px] border transition-all h-24 flex items-center cursor-grab active:cursor-grabbing ${
+                      link.isVisible 
+                        ? "bg-white/[0.03] backdrop-blur-3xl border-white/5 hover:border-white/10 shadow-lg" 
+                        : "bg-white/[0.01] border-white/5 opacity-40 grayscale"
+                    }`}
+                  >
+                    {/* Status Indicator Bar */}
                     <div 
-                      className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 relative overflow-hidden bg-white/5 border border-white/5 shadow-inner"
-                    >
-                      <Icon className="w-5 h-5 relative z-10 opacity-70 group-hover:opacity-100 transition-opacity" style={{ color: config.color }} />
-                      <div className="absolute inset-0 bg-inherit blur-lg opacity-40" />
-                    </div>
+                      className="absolute left-0 top-0 bottom-0 w-1 transition-all group-hover:w-2"
+                      style={{ backgroundColor: config.color }} 
+                    />
                     
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-black text-base tracking-tight mb-0.5">
-                        {link.platform === "other" ? link.username : config.displayName}
-                      </h3>
-                      <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20 truncate">
-                        {link.url.replace("https://", "")}
-                      </p>
-                    </div>
-                    
-                    <div className="flex items-center gap-2">
-                       <button
-                        onClick={() => handleToggleVisibility(link)}
-                        className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${
-                          link.isVisible 
-                            ? "bg-primary/10 text-primary border border-primary/20" 
-                            : "bg-white/5 text-white/20 border border-white/5"
-                        }`}
+                    <div className="w-full px-4 flex items-center gap-4">
+                      <div className="text-white/10 hover:text-white/40 p-1 transition-colors">
+                        <GripVertical className="w-5 h-5" />
+                      </div>
+                      
+                      <div 
+                        className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 relative overflow-hidden bg-white/5 border border-white/5 shadow-inner"
                       >
-                        {link.isVisible ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
-                      </button>
-                      <button
-                        onClick={() => handleDelete(link.id)}
-                        className="w-10 h-10 rounded-xl flex items-center justify-center text-white/10 hover:text-red-500 hover:bg-red-500/10 border border-transparent hover:border-red-500/20 transition-all"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                      </button>
+                        <Icon className="w-5 h-5 relative z-10 opacity-70 group-hover:opacity-100 transition-opacity" style={{ color: config.color }} />
+                        <div className="absolute inset-0 bg-inherit blur-lg opacity-40" />
+                      </div>
+                      
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-black text-base tracking-tight mb-0.5">
+                          {link.platform === "other" ? link.username : config.displayName}
+                        </h3>
+                        <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20 truncate">
+                          {link.url.replace("https://", "")}
+                        </p>
+                      </div>
+                      
+                      <div className="flex items-center gap-2" onPointerDown={(e) => e.stopPropagation()}>
+                         <button
+                          onClick={() => handleToggleVisibility(link)}
+                          className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${
+                            link.isVisible 
+                              ? "bg-primary/10 text-primary border border-primary/20" 
+                              : "bg-white/5 text-white/20 border border-white/5"
+                          }`}
+                        >
+                          {link.isVisible ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+                        </button>
+                        <button
+                          onClick={() => handleDelete(link.id)}
+                          className="w-10 h-10 rounded-xl flex items-center justify-center text-white/10 hover:text-red-500 hover:bg-red-500/10 border border-transparent hover:border-red-500/20 transition-all"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              );
-            })
+                  </Reorder.Item>
+                );
+              })}
+            </Reorder.Group>
           )}
         </AnimatePresence>
       </div>
@@ -376,10 +407,13 @@ export default function SocialLinksManager() {
                         value={newUsername}
                         onChange={(e) => handleInputUpdate(e.target.value)}
                         placeholder={selectedPlatform === "other" ? "https://..." : "username"}
-                        className="pl-12 h-12 bg-white/[0.04] border-white/5 focus-visible:ring-primary rounded-xl px-4 font-bold text-sm"
+                        className={`pl-12 h-12 bg-white/[0.04] border-white/5 focus-visible:ring-primary rounded-xl px-4 font-bold text-sm ${urlError ? 'border-red-500/50' : ''}`}
                         onKeyDown={(e) => e.key === 'Enter' && handleAddLink()}
                       />
                   </div>
+                  {urlError && (
+                    <p className="text-red-400 text-[10px] font-bold mt-2 ml-2">{urlError}</p>
+                  )}
                 </div>
 
                 <Button
